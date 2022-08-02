@@ -1,4 +1,13 @@
-import {FlatList, Image, ScrollView, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import { Entypo, Feather } from '@expo/vector-icons';
+
+import {
+    FlatList,
+    Image,
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View} from 'react-native';
 
 import {styles} from './styles';
 
@@ -19,20 +28,27 @@ export function Home() {
                     placeholderTextColor="#808080"
                 />
                 <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>+</Text>
+                    <Text style={styles.buttonText}>
+                        <Image source={require('../../assets/plus.png')} />
+                    </Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.contentText}>
                 <Text style={styles.textCreate}>
                     Criadas
-                    <Text>0</Text>
                 </Text>
+                <Text style={styles.resultNumber}>0</Text>
+
                 <Text style={styles.textCompleted}>
                     Concluídas
-                    <Text>0</Text>
                 </Text>
+                <Text style={styles.resultNumberTwo}>0</Text>
             </View>
             <ScrollView style={styles.list}>
+                <Text style={styles.line}></Text>
+                <View style={styles.iconList}>
+                    <Image source={require('../../assets/clipboard.png')} />
+                </View>
                 <Text style={styles.textListNull}>Você inda não tem tarefas cadastradas</Text>
                 <Text style={styles.textListCreateNull}>Crie tarefas e organize seus itens a fazer</Text>
             </ScrollView>

@@ -4,10 +4,7 @@ import {Home} from "./src/screens/Home";
 export default function App() {
   return (
       <>
-        <StatusBar
-            translucent
-            backgroundColor="transparent"
-        />
+        <StatusBar style={"light"} />
         <Home />
       </>
   );
