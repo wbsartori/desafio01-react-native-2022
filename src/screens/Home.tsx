@@ -1,17 +1,41 @@
 import { Entypo, Feather } from '@expo/vector-icons';
+import { useState } from 'react';
 
-import {
-    FlatList,
+import {    
     Image,
     ScrollView,
-    Text,
-    TextInput,
+    Text,    
+    View,
     TouchableOpacity,
-    View} from 'react-native';
+    TextInput,
+    FlatList
+} from 'react-native';
+
+import { Button } from '../components/Button';
+import { Input } from '../components/TextInput';
 
 import {styles} from './styles';
 
-export function Home() {
+interface ITask {
+    id: string;
+    name: string;
+}
+
+export function Home() {    
+
+      const [tasks, setTasks] = useState<ITask[]>([]);
+  
+
+    function handleAddNewTask(newTask: string) {
+        const data = {
+            id: new Date().getTime(),
+            name: newTask
+        }            
+                
+        console.log(data);
+        
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -21,17 +45,23 @@ export function Home() {
                     <Text style={styles.todo_do}>do</Text>
                 </View>
             </View>
+
             <View style={styles.formContent}>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Adicione uma Nova tarefa"
-                    placeholderTextColor="#808080"
+                <TextInput style={styles.input}
+                    placeholder="Adicionar uma nova tarefa"
+                    placeholderTextColor="#555"
+                    
                 />
-                <TouchableOpacity style={styles.button}>
+
+                <TouchableOpacity 
+                    style={styles.button}
+                    onPress={handleAddNewTask}
+                >
                     <Text style={styles.buttonText}>
                         <Image source={require('../../assets/plus.png')} />
                     </Text>
                 </TouchableOpacity>
+                
             </View>
             <View style={styles.contentText}>
                 <Text style={styles.textCreate}>
@@ -51,7 +81,7 @@ export function Home() {
                 </View>
                 <Text style={styles.textListNull}>Você inda não tem tarefas cadastradas</Text>
                 <Text style={styles.textListCreateNull}>Crie tarefas e organize seus itens a fazer</Text>
-            </ScrollView>
+            </ScrollView>            
         </View>
 );
 }
