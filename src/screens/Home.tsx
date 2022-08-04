@@ -12,27 +12,16 @@ import {
 } from 'react-native';
 
 import { Button } from '../components/Button';
-import { Input } from '../components/TextInput';
 
 import {styles} from './styles';
+import {TasksList} from "../components/TaskList";
+import { Task } from '../components/Task';
 
-interface ITask {
-    id: string;
-    name: string;
-}
 
 export function Home() {    
 
-      const [tasks, setTasks] = useState<ITask[]>([]);
-  
-
-    function handleAddNewTask(newTask: string) {
-        const data = {
-            id: new Date().getTime(),
-            name: newTask
-        }            
-                
-        console.log(data);
+    function handleAddNewTask() {
+        console.log('clicou no botao');
         
     }
 
@@ -60,9 +49,9 @@ export function Home() {
                     <Text style={styles.buttonText}>
                         <Image source={require('../../assets/plus.png')} />
                     </Text>
-                </TouchableOpacity>
-                
+                </TouchableOpacity>                
             </View>
+
             <View style={styles.contentText}>
                 <Text style={styles.textCreate}>
                     Criadas
@@ -74,14 +63,18 @@ export function Home() {
                 </Text>
                 <Text style={styles.resultNumberTwo}>0</Text>
             </View>
-            <ScrollView style={styles.list}>
+
+            <Task task="Primeira tafera foi adicionada com sucesso sssss" />
+            <Task task="Primeira tafera foi adicionada com sucesso sssss" />
+            <Task task="Primeira tafera foi adicionada com sucesso sssss" />
+            {/* <ScrollView style={styles.list}>
                 <Text style={styles.line}></Text>
                 <View style={styles.iconList}>
                     <Image source={require('../../assets/clipboard.png')} />
                 </View>
                 <Text style={styles.textListNull}>Você inda não tem tarefas cadastradas</Text>
                 <Text style={styles.textListCreateNull}>Crie tarefas e organize seus itens a fazer</Text>
-            </ScrollView>            
+            </ScrollView> */}
         </View>
 );
 }
